@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AvesTerra Avial, Python edition &mdash; AvesTerra 2.5.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Session operations" href="avial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> AvesTerra
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="avial.html">Session operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#entity-operations">Entity operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#comprehensive-operations">Comprehensive operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#value-operations">Value operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#label-operations">Label operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#attribute-operations">Attribute operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#property-operations">Property operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#annotation-operations">Annotation operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#connection-operations">Connection operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#attachment-operations">Attachment operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#event-operations">Event operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#outlet-operations">Outlet operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#data-operations">Data operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#classes">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">Registry operations</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">AvesTerra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>AvesTerra Avial, Python edition</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>© 2015-2020, Georgetown University</p>
+<div class="section" id="avesterra-avial-python-edition">
+<h1>AvesTerra Avial, Python edition<a class="headerlink" href="#avesterra-avial-python-edition" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="avial.html">Session operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#initialize">initialize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#finalize">finalize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#local-server">local_server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#entity-operations">Entity operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#create-entity">create_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#delete-entity">delete_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#save-entity">save_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#restore-entity">restore_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#erase-entity">erase_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#redirect-entity">redirect_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#reference-entity">reference_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#dereference-entity">dereference_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#invoke-entity">invoke_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#inquire-entity">inquire_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#change-entity">change_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#entity-extinct">entity_extinct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#entity-available">entity_available</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#entity-ready">entity_ready</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#entity-name">entity_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#entity-class">entity_class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#entity-subclass">entity_subclass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#entity-server">entity_server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#entity-references">entity_references</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#entity-timestamp">entity_timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#comprehensive-operations">Comprehensive operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#store-entity">store_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#retrieve-entity">retrieve_entity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#value-operations">Value operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#get-value">get_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#set-value">set_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#clear-value">clear_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#insert-value">insert_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#remove-value">remove_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#replace-value">replace_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#erase-value">erase_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#find-value">find_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#retrieve-value">retrieve_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#value-count">value_count</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#label-operations">Label operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#get-label">get_label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#set-label">set_label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#clear-label">clear_label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#erase-label">erase_label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#find-label">find_label</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#attribute-operations">Attribute operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#get-attribute">get_attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#set-attribute">set_attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#clear-attribute">clear_attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#erase-attribute">erase_attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#find-attribute">find_attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#retrieve-attribute">retrieve_attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#attribute-item">attribute_item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#attribute-count">attribute_count</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#property-operations">Property operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#get-property">get_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#set-property">set_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#clear-property">clear_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#erase-property">erase_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#find-property">find_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#retrieve-property">retrieve_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#insert-property">insert_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#remove-property">remove_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#replace-property">replace_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#update-property">update_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#lookup-property">lookup_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#sort-property">sort_property</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#property-name">property_name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#property-key">property_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#property-value">property_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#property-count">property_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#property-member">property_member</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#annotation-operations">Annotation operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#get-annotation">get_annotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#set-annotation">set_annotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#clear-annotation">clear_annotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#erase-annotation">erase_annotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#find-annotation">find_annotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#annotation-count">annotation_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#annotation-item">annotation_item</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#connection-operations">Connection operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#connection-count">connection_count</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#attachment-operations">Attachment operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#attachment-count">attachment_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#attach-attribute">attach_attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#detach-attribute">detach_attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#attribute-attached">attribute_attached</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#attachment-attribute">attachment_attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#attachment-precedence">attachment_precedence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#attachment-outlet">attachment_outlet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#event-operations">Event operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#publish-event">publish_event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#subscribe-event">subscribe_event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#cancel-event">cancel_event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#flush-event">flush_event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#wait-event">wait_event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#event-count">event_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#subscription-count">subscription_count</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#outlet-operations">Outlet operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#create-outlet">create_outlet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#delete-outlet">delete_outlet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#activate-outlet">activate_outlet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#deactivate-outlet">deactivate_outlet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#entity-activated">entity_activated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#adapt-outlet">adapt_outlet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#reset-outlet">reset_outlet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#lock-outlet">lock_outlet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#unlock-outlet">unlock_outlet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#entity-locked">entity_locked</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#data-operations">Data operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#read-data">read_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#write-data">write_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#erase-data">erase_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="avial.html#data-count">data_count</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#classes">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">Registry operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#create-registry">create_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#delete-registry">delete_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#register-entity">register_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#deregister-entity">deregister_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#save-registry">save_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#sort-registry">sort_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#lookup-registry">lookup_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#find-registry">find_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#registry-item">registry_item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#item-count">item_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html#registry-member">registry_member</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="avial.html" class="btn btn-neutral float-right" title="Session operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright © 2015-2020, Georgetown University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

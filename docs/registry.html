@@ -1,0 +1,791 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Registry operations &mdash; AvesTerra 2.5.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Session operations" href="avial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> AvesTerra
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="avial.html">Session operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#entity-operations">Entity operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#comprehensive-operations">Comprehensive operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#value-operations">Value operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#label-operations">Label operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#attribute-operations">Attribute operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#property-operations">Property operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#annotation-operations">Annotation operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#connection-operations">Connection operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#attachment-operations">Attachment operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#event-operations">Event operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#outlet-operations">Outlet operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#data-operations">Data operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="avial.html#classes">Classes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Registry operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-registry">create_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delete-registry">delete_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#register-entity">register_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deregister-entity">deregister_entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#save-registry">save_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sort-registry">sort_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lookup-registry">lookup_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#find-registry">find_registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#registry-item">registry_item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#item-count">item_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#registry-member">registry_member</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AvesTerra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Registry operations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/registry.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-avesterra.registry"></span><div class="section" id="registry-operations">
+<h1>Registry operations<a class="headerlink" href="#registry-operations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="create-registry">
+<h2>create_registry<a class="headerlink" href="#create-registry" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="avesterra.registry.create_registry">
+<code class="sig-name descname">create_registry</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">handle_exceptions=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#avesterra.registry.create_registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create and return a new registry.</p>
+<p>Create a new registry. Indicate whether changes (i.e. newly registered
+entities) should be saved automatially.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – the name of the registry to be created.</p></li>
+<li><p><strong>autosave</strong> (<em>bool</em>) – should every change to the registry be automatically saved by the
+registry adapter? Or should changes only be saved on an explicit call to
+<code class="xref py py-func docutils literal notranslate"><span class="pre">save_entity()</span></code>?</p></li>
+<li><p><strong>auth</strong> (<em>Authorization</em>) – an object that authorizes the creation of the registry</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The newly created registry entity.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>at.Entity</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>RegistryError</strong> – If <code class="docutils literal notranslate"><span class="pre">name</span></code> is not a string, or <code class="docutils literal notranslate"><span class="pre">auth</span></code> does not permit registry
+    creation,  or the underlying implementation raises some other error.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#avesterra.registry.delete_registry" title="avesterra.registry.delete_registry"><code class="xref py py-func docutils literal notranslate"><span class="pre">delete_registry()</span></code></a></dt><dd><p>delete a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.register_entity" title="avesterra.registry.register_entity"><code class="xref py py-func docutils literal notranslate"><span class="pre">register_entity()</span></code></a></dt><dd><p>registry an entity in a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.deregister_entity" title="avesterra.registry.deregister_entity"><code class="xref py py-func docutils literal notranslate"><span class="pre">deregister_entity()</span></code></a></dt><dd><p>remove an entity from a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.lookup_registry" title="avesterra.registry.lookup_registry"><code class="xref py py-func docutils literal notranslate"><span class="pre">lookup_registry()</span></code></a></dt><dd><p>look up a key in a registry</p>
+</dd>
+<dt><code class="xref py py-func docutils literal notranslate"><span class="pre">create_entity()</span></code></dt><dd><p>create an entity</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">avesterra.registry</span> <span class="k">as</span> <span class="nn">reg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">avesterra.avial</span> <span class="k">as</span> <span class="nn">av</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create a registry of Academy Award winners.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oscar_winners</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">create_registry</span><span class="p">(</span><span class="s1">&#39;Oscar winners&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create an entity for Jack Nicholson.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jack</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Jack Nicholson&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jack</span>
+<span class="go">Entity(2906857743, 167772516, 1419285)</span>
+</pre></div>
+</div>
+<p>Register Jack in the Oscar registry.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">oscar_winners</span><span class="p">,</span> <span class="s1">&#39;Jack Nicholson&#39;</span><span class="p">,</span> <span class="s1">&#39;Jack Nicholson&#39;</span><span class="p">,</span> <span class="n">jack</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Look him up, to make sure he is there.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">lookup_registry</span><span class="p">(</span><span class="n">oscar_winners</span><span class="p">,</span> <span class="s1">&#39;Jack Nicholson&#39;</span><span class="p">)</span>
+<span class="go">Entity(2906857743, 167772516, 1419285)</span>
+</pre></div>
+</div>
+<p>Look up John Malkovich, who surprisingly has never won an Oscar.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">lookup_registry</span><span class="p">(</span><span class="n">oscar_winners</span><span class="p">,</span> <span class="s1">&#39;John Malkovich&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Clean up the example and end the session.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">delete_registry</span><span class="p">(</span><span class="n">oscar_winners</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">av</span><span class="o">.</span><span class="n">delete_entity</span><span class="p">(</span><span class="n">jack</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">av</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-registry">
+<h2>delete_registry<a class="headerlink" href="#delete-registry" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="avesterra.registry.delete_registry">
+<code class="sig-name descname">delete_registry</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">handle_exceptions=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#avesterra.registry.delete_registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the registry, dereferencing all registered entities.</p>
+<p>When an entity is registered in a registry, its reference count is
+incremented, preventing it from being garbage colleted. When a registry
+is deleted, each of the registered entities is dereferenced, decrementing
+each of their reference counts. If an entity’s reference count reaches
+zero, it is deleted, as garbage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>registry</strong> (<em>Entity</em>) – the registry to be deleted</p></li>
+<li><p><strong>auth</strong> (<em>Authorization</em>) – an object that authorizes the deletion of the registry</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>RegistryError</strong> – if <code class="docutils literal notranslate"><span class="pre">registry</span></code> is not a registry, or <code class="docutils literal notranslate"><span class="pre">auth</span></code> does not permit
+    registry deletion.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#avesterra.registry.create_registry" title="avesterra.registry.create_registry"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_registry()</span></code></a></dt><dd><p>create a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.register_entity" title="avesterra.registry.register_entity"><code class="xref py py-func docutils literal notranslate"><span class="pre">register_entity()</span></code></a></dt><dd><p>registry an entity in a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.deregister_entity" title="avesterra.registry.deregister_entity"><code class="xref py py-func docutils literal notranslate"><span class="pre">deregister_entity()</span></code></a></dt><dd><p>remove an entity from a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.lookup_registry" title="avesterra.registry.lookup_registry"><code class="xref py py-func docutils literal notranslate"><span class="pre">lookup_registry()</span></code></a></dt><dd><p>look up a key in a registry</p>
+</dd>
+<dt><code class="xref py py-func docutils literal notranslate"><span class="pre">create_entity()</span></code></dt><dd><p>create an entity</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">avesterra.registry</span> <span class="k">as</span> <span class="nn">reg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">avesterra.avial</span> <span class="k">as</span> <span class="nn">av</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create a registry of Academy Award winners.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oscar_winners</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">create_registry</span><span class="p">(</span><span class="s1">&#39;Oscar winners&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create an entity for Jack Nicholson.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jack</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Jack Nicholson&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jack</span>
+<span class="go">Entity(2906857743, 167772516, 1419285)</span>
+</pre></div>
+</div>
+<p>Register Jack in the Oscar registry.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">oscar_winners</span><span class="p">,</span> <span class="s1">&#39;Jack Nicholson&#39;</span><span class="p">,</span> <span class="s1">&#39;Jack Nicholson&#39;</span><span class="p">,</span> <span class="n">jack</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Look him up, to make sure he is there.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">lookup_registry</span><span class="p">(</span><span class="n">oscar_winners</span><span class="p">,</span> <span class="s1">&#39;Jack Nicholson&#39;</span><span class="p">)</span>
+<span class="go">Entity(2906857743, 167772516, 1419285)</span>
+</pre></div>
+</div>
+<p>Delete the registry and clean up</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">delete_registry</span><span class="p">(</span><span class="n">oscar_winners</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">av</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="register-entity">
+<h2>register_entity<a class="headerlink" href="#register-entity" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="avesterra.registry.register_entity">
+<code class="sig-name descname">register_entity</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">handle_exceptions=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#avesterra.registry.register_entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register the entity in the registry.</p>
+<p>Register the entity in the registry, deregistering any entity that is
+already in the registry under that key. Update reference counts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>registry</strong> (<em>Entity</em>) – the registry that is to include <code class="docutils literal notranslate"><span class="pre">entity</span></code></p></li>
+<li><p><strong>name</strong> (<em>str</em>) – the name under which <code class="docutils literal notranslate"><span class="pre">entity</span></code> is to be registered</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – the key under which <code class="docutils literal notranslate"><span class="pre">entity</span></code> is to be registred</p></li>
+<li><p><strong>entity</strong> (<em>Entity</em>) – the entity to be registered</p></li>
+<li><p><strong>auth</strong> (<em>Authorization</em>) – an object that authorizes the registration of the entity</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>RegistryError</strong> – if <code class="docutils literal notranslate"><span class="pre">registry</span></code> is not a registry, or <code class="docutils literal notranslate"><span class="pre">entity</span></code> is not an entity, or
+    <code class="docutils literal notranslate"><span class="pre">name</span></code> is an invalid name, or <code class="docutils literal notranslate"><span class="pre">key</span></code> is an invalid key,
+    or <code class="docutils literal notranslate"><span class="pre">auth</span></code> does not permit the entity to be registered, or the
+    underlying implementation raises some other error.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#avesterra.registry.create_registry" title="avesterra.registry.create_registry"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_registry()</span></code></a></dt><dd><p>create a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.delete_registry" title="avesterra.registry.delete_registry"><code class="xref py py-func docutils literal notranslate"><span class="pre">delete_registry()</span></code></a></dt><dd><p>delete a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.deregister_entity" title="avesterra.registry.deregister_entity"><code class="xref py py-func docutils literal notranslate"><span class="pre">deregister_entity()</span></code></a></dt><dd><p>remove an entity from a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.lookup_registry" title="avesterra.registry.lookup_registry"><code class="xref py py-func docutils literal notranslate"><span class="pre">lookup_registry()</span></code></a></dt><dd><p>look up a key in a registry</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">avesterra.registry</span> <span class="k">as</span> <span class="nn">reg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">avesterra.avial</span> <span class="k">as</span> <span class="nn">av</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create a registry of Academy Award winners.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oscar_winners</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">create_registry</span><span class="p">(</span><span class="s1">&#39;Oscar winners&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create an entity for Jack Nicholson.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jack</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Jack Nicholson&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jack</span>
+<span class="go">Entity(2906857743, 167772516, 1419285)</span>
+</pre></div>
+</div>
+<p>Register Jack in the Oscar registry.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">oscar_winners</span><span class="p">,</span> <span class="s1">&#39;Jack Nicholson&#39;</span><span class="p">,</span> <span class="s1">&#39;Jack Nicholson&#39;</span><span class="p">,</span> <span class="n">jack</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Look him up, to make sure he is there.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">lookup_registry</span><span class="p">(</span><span class="n">oscar_winners</span><span class="p">,</span> <span class="s1">&#39;Jack Nicholson&#39;</span><span class="p">)</span>
+<span class="go">Entity(2906857743, 167772516, 1419285)</span>
+</pre></div>
+</div>
+<p>Look up John Malkovich, who surprisingly has never won an Oscar.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">lookup_registry</span><span class="p">(</span><span class="n">oscar_winners</span><span class="p">,</span> <span class="s1">&#39;John Malkovich&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Correct that oversight by the Academy of Motion Picture Arts and Sciences.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">malkovich</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;John Malkovich&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">oscar_winners</span><span class="p">,</span> <span class="s1">&#39;John Malkovich&#39;</span><span class="p">,</span> <span class="s1">&#39;John Malkovich&#39;</span><span class="p">,</span> <span class="n">malkovich</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Clean up the example and end the session.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">delete_registry</span><span class="p">(</span><span class="n">oscar_winners</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">av</span><span class="o">.</span><span class="n">delete_entity</span><span class="p">(</span><span class="n">jack</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">av</span><span class="o">.</span><span class="n">delete_entity</span><span class="p">(</span><span class="n">malkovich</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">av</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="deregister-entity">
+<h2>deregister_entity<a class="headerlink" href="#deregister-entity" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="avesterra.registry.deregister_entity">
+<code class="sig-name descname">deregister_entity</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">handle_exceptions=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#avesterra.registry.deregister_entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an entity from a registry.</p>
+<p>Remove an entity from a registry, and update its reference counts, deleting
+the entity if reference count reaches zero. The entity to be deregistgered
+is identified by key or by index. If
+both a key and an index are provided, the index is ignored and the key is
+used. If neither are provided, the last entity is removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>registry</strong> (<em>Entity</em>) – the registry from which the entity is to be removed</p></li>
+<li><p><strong>auth</strong> (<em>Authorization</em>) – an object that authorizes the removal of the entity from the registry</p></li>
+<li><p><strong>key</strong> (<em>str</em><em>, </em><em>optional</em>) – the key identifying the entity to be removed. If not provided, remove
+an entity by <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p></li>
+<li><p><strong>index</strong> (<em>int</em><em>, </em><em>optional</em>) – the position of the entity to be removed. For example, if <code class="docutils literal notranslate"><span class="pre">index</span></code> is
+3, the third entity is removed from the registry. Note that if <code class="docutils literal notranslate"><span class="pre">key</span></code>
+is provided, <code class="docutils literal notranslate"><span class="pre">index</span></code> is ignored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>RegistryError</strong> – if <code class="docutils literal notranslate"><span class="pre">registry</span></code> is not a registry, or <code class="docutils literal notranslate"><span class="pre">key</span></code> is not found in the
+    registry, or <code class="docutils literal notranslate"><span class="pre">auth</span></code> does not permit deregistering, or the underlying
+    implementation raises some other error.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#avesterra.registry.create_registry" title="avesterra.registry.create_registry"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_registry()</span></code></a></dt><dd><p>create a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.delete_registry" title="avesterra.registry.delete_registry"><code class="xref py py-func docutils literal notranslate"><span class="pre">delete_registry()</span></code></a></dt><dd><p>delete a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.register_entity" title="avesterra.registry.register_entity"><code class="xref py py-func docutils literal notranslate"><span class="pre">register_entity()</span></code></a></dt><dd><p>register an entity in a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.lookup_registry" title="avesterra.registry.lookup_registry"><code class="xref py py-func docutils literal notranslate"><span class="pre">lookup_registry()</span></code></a></dt><dd><p>look up a key in a registry</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">avesterra.registry</span> <span class="k">as</span> <span class="nn">reg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">avesterra.avial</span> <span class="k">as</span> <span class="nn">av</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pp</span> <span class="o">=</span> <span class="n">pprint</span><span class="o">.</span><span class="n">PrettyPrinter</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create a few people entities.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">craig</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Craig Finn&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tad</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Tad Kubler&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">galen</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Galen Polivka&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">judd</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Judd Counsell&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create a registry and add the people entities to the registry.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ths</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">create_registry</span><span class="p">(</span><span class="s2">&quot;The Hold Steady&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;lead vocals, guitar&#39;</span><span class="p">,</span> <span class="s1">&#39;Craig&#39;</span><span class="p">,</span> <span class="n">craig</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;lead guitar, backing vocals&#39;</span><span class="p">,</span> <span class="s1">&#39;Tad&#39;</span><span class="p">,</span> <span class="n">tad</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;bass&#39;</span><span class="p">,</span> <span class="s1">&#39;Galen&#39;</span><span class="p">,</span> <span class="n">galen</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;drums&#39;</span><span class="p">,</span> <span class="s1">&#39;Judd&#39;</span><span class="p">,</span> <span class="n">judd</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">av</span><span class="o">.</span><span class="n">retrieve_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">)[</span><span class="s1">&#39;Properties&#39;</span><span class="p">])</span>
+<span class="go">[   [&#39;lead vocals, guitar&#39;, &#39;Craig&#39;, &#39;&lt;2906857743|167772516|15626357&gt;&#39;],</span>
+<span class="go">    [&#39;lead guitar, backing vocals&#39;, &#39;Tad&#39;, &#39;&lt;2906857743|167772516|15626358&gt;&#39;],</span>
+<span class="go">    [&#39;bass&#39;, &#39;Galen&#39;, &#39;&lt;2906857743|167772516|15626359&gt;&#39;],</span>
+<span class="go">    [&#39;drums&#39;, &#39;Judd&#39;, &#39;&lt;2906857743|167772516|15626360&gt;&#39;]]</span>
+</pre></div>
+</div>
+<p>Judd leaves the band. Deregister him by key.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">deregister_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;Judd&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The band needs a drummer. Add Bobby.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bobby</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Bobby Drake&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;drums, percussion&#39;</span><span class="p">,</span> <span class="s1">&#39;Bobby&#39;</span><span class="p">,</span> <span class="n">bobby</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">av</span><span class="o">.</span><span class="n">retrieve_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">)[</span><span class="s1">&#39;Properties&#39;</span><span class="p">])</span>
+<span class="go">[   [&#39;lead vocals, guitar&#39;, &#39;Craig&#39;, &#39;&lt;2906857743|167772516|15626357&gt;&#39;],</span>
+<span class="go">    [&#39;lead guitar, backing vocals&#39;, &#39;Tad&#39;, &#39;&lt;2906857743|167772516|15626358&gt;&#39;],</span>
+<span class="go">    [&#39;bass&#39;, &#39;Galen&#39;, &#39;&lt;2906857743|167772516|15626359&gt;&#39;],</span>
+<span class="go">    [&#39;drums, percussion&#39;, &#39;Bobby&#39;, &#39;&lt;2906857743|167772516|15626362&gt;&#39;]]</span>
+</pre></div>
+</div>
+<p>Franz joins the band. Franz plays a lot of instruments.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">franz</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Franz Nicolay&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;piano, keyboards, accordion, harmonica, backing vocals&#39;</span><span class="p">,</span> <span class="s1">&#39;Franz&#39;</span><span class="p">,</span> <span class="n">franz</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">av</span><span class="o">.</span><span class="n">retrieve_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">)[</span><span class="s1">&#39;Properties&#39;</span><span class="p">])</span>
+<span class="go">[   [&#39;lead vocals, guitar&#39;, &#39;Craig&#39;, &#39;&lt;2906857743|167772516|15626357&gt;&#39;],</span>
+<span class="go">    [&#39;lead guitar, backing vocals&#39;, &#39;Tad&#39;, &#39;&lt;2906857743|167772516|15626358&gt;&#39;],</span>
+<span class="go">    [&#39;bass&#39;, &#39;Galen&#39;, &#39;&lt;2906857743|167772516|15626359&gt;&#39;],</span>
+<span class="go">    [&#39;drums, percussion&#39;, &#39;Bobby&#39;, &#39;&lt;2906857743|167772516|15626362&gt;&#39;],</span>
+<span class="go">    [   &#39;piano, keyboards, accordion, harmonica, backing vocals&#39;,</span>
+<span class="go">        &#39;Franz&#39;,</span>
+<span class="go">        &#39;&lt;2906857743|167772516|15626363&gt;&#39;]]</span>
+</pre></div>
+</div>
+<p>Franz leaves. Deregister him by index.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">deregister_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Steve joins.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">steve</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Steve Selvidge&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;rhythm guitar, backing vocals&#39;</span><span class="p">,</span> <span class="s1">&#39;Steve&#39;</span><span class="p">,</span> <span class="n">steve</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">av</span><span class="o">.</span><span class="n">retrieve_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">)[</span><span class="s1">&#39;Properties&#39;</span><span class="p">])</span>
+<span class="go">[   [&#39;lead vocals, guitar&#39;, &#39;Craig&#39;, &#39;&lt;2906857743|167772516|15626357&gt;&#39;],</span>
+<span class="go">    [&#39;lead guitar, backing vocals&#39;, &#39;Tad&#39;, &#39;&lt;2906857743|167772516|15626358&gt;&#39;],</span>
+<span class="go">    [&#39;bass&#39;, &#39;Galen&#39;, &#39;&lt;2906857743|167772516|15626359&gt;&#39;],</span>
+<span class="go">    [&#39;drums, percussion&#39;, &#39;Bobby&#39;, &#39;&lt;2906857743|167772516|15626362&gt;&#39;],</span>
+<span class="go">    [   &#39;rhythm guitar, backing vocals&#39;,</span>
+<span class="go">        &#39;Steve&#39;,</span>
+<span class="go">        &#39;&lt;2906857743|167772516|15626364&gt;&#39;]]</span>
+</pre></div>
+</div>
+<p>Franz rejoins. There is much rejoicing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;piano, keyboards, accordion, harmonica, backing vocals&#39;</span><span class="p">,</span> <span class="s1">&#39;Franz&#39;</span><span class="p">,</span> <span class="n">franz</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">av</span><span class="o">.</span><span class="n">retrieve_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">)[</span><span class="s1">&#39;Properties&#39;</span><span class="p">])</span>
+<span class="go">[   [&#39;lead vocals, guitar&#39;, &#39;Craig&#39;, &#39;&lt;2906857743|167772516|15626357&gt;&#39;],</span>
+<span class="go">    [&#39;lead guitar, backing vocals&#39;, &#39;Tad&#39;, &#39;&lt;2906857743|167772516|15626358&gt;&#39;],</span>
+<span class="go">    [&#39;bass&#39;, &#39;Galen&#39;, &#39;&lt;2906857743|167772516|15626359&gt;&#39;],</span>
+<span class="go">    [&#39;drums, percussion&#39;, &#39;Bobby&#39;, &#39;&lt;2906857743|167772516|15626362&gt;&#39;],</span>
+<span class="go">    [   &#39;rhythm guitar, backing vocals&#39;,</span>
+<span class="go">        &#39;Steve&#39;,</span>
+<span class="go">        &#39;&lt;2906857743|167772516|15626364&gt;&#39;],</span>
+<span class="go">    [   &#39;piano, keyboards, accordion, harmonica, backing vocals&#39;,</span>
+<span class="go">        &#39;Franz&#39;,</span>
+<span class="go">        &#39;&lt;2906857743|167772516|15626363&gt;&#39;]]</span>
+</pre></div>
+</div>
+<p>Delete everything and clean up.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">delete_registry</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">av</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="save-registry">
+<h2>save_registry<a class="headerlink" href="#save-registry" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="avesterra.registry.save_registry">
+<code class="sig-name descname">save_registry</code><span class="sig-paren">(</span><em class="sig-param">registry</em>, <em class="sig-param">auth</em><span class="sig-paren">)</span><a class="headerlink" href="#avesterra.registry.save_registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Persist any non-persisted changes in the registry.</p>
+<p>Persist any non-persisted changed. Has no effect if the registry is
+autosaved.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sort-registry">
+<h2>sort_registry<a class="headerlink" href="#sort-registry" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="avesterra.registry.sort_registry">
+<code class="sig-name descname">sort_registry</code><span class="sig-paren">(</span><em class="sig-param">registry</em>, <em class="sig-param">auth</em><span class="sig-paren">)</span><a class="headerlink" href="#avesterra.registry.sort_registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the properties in the registry by property name.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="lookup-registry">
+<h2>lookup_registry<a class="headerlink" href="#lookup-registry" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="avesterra.registry.lookup_registry">
+<code class="sig-name descname">lookup_registry</code><span class="sig-paren">(</span><em class="sig-param">registry</em>, <em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#avesterra.registry.lookup_registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lookup a key in a registry, returning whether found and the entity.</p>
+<p>Lookup a key in a registry, and return two values. If an entity by that
+key is found in the registry, return True and the entity. If not found,
+return False and None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>registry</strong> (<em>Entity</em>) – the registry that might include <code class="docutils literal notranslate"><span class="pre">key</span></code></p></li>
+<li><p><strong>key</strong> (<em>str</em>) – the key to lookup</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>key_found</strong> (<em>bool</em>) – whether an entity with key <code class="docutils literal notranslate"><span class="pre">key</span></code> was found</p></li>
+<li><p><strong>entity</strong> (<em>Entity</em>) – the entity found, or None if not found</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>RegistryError</strong> – if <code class="docutils literal notranslate"><span class="pre">registry</span></code> is not an entity, or is an entity but connected to no
+    adapter, or <code class="docutils literal notranslate"><span class="pre">key</span></code> is not a string, or
+    the underlying implementation raises some other error.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#avesterra.registry.create_registry" title="avesterra.registry.create_registry"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_registry()</span></code></a></dt><dd><p>create a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.delete_registry" title="avesterra.registry.delete_registry"><code class="xref py py-func docutils literal notranslate"><span class="pre">delete_registry()</span></code></a></dt><dd><p>delete a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.register_entity" title="avesterra.registry.register_entity"><code class="xref py py-func docutils literal notranslate"><span class="pre">register_entity()</span></code></a></dt><dd><p>register an entity in a registry</p>
+</dd>
+<dt><a class="reference internal" href="#avesterra.registry.deregister_entity" title="avesterra.registry.deregister_entity"><code class="xref py py-func docutils literal notranslate"><span class="pre">deregister_entity()</span></code></a></dt><dd><p>remove an entity from a registry</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">avesterra.registry</span> <span class="k">as</span> <span class="nn">reg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">avesterra.avial</span> <span class="k">as</span> <span class="nn">av</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create a few people entities,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">craig</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Craig Finn&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tad</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Tad Kubler&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">franz</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">create_entity</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;Franz Nicolay&quot;</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">av</span><span class="o">.</span><span class="n">Subclass</span><span class="o">.</span><span class="n">PERSON</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">outlet</span><span class="o">=</span><span class="n">av</span><span class="o">.</span><span class="n">object_outlet</span><span class="p">(),</span> <span class="n">autosave</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create a registry and put the people in the registry.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ths</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">create_registry</span><span class="p">(</span><span class="s2">&quot;The Hold Steady&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;Craig Finn&#39;</span><span class="p">,</span> <span class="s1">&#39;Craig&#39;</span><span class="p">,</span> <span class="n">craig</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;Tad Kubler&#39;</span><span class="p">,</span> <span class="s1">&#39;Tad&#39;</span><span class="p">,</span> <span class="n">tad</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">register_entity</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;Franz Nicolay&#39;</span><span class="p">,</span> <span class="s1">&#39;Franz&#39;</span><span class="p">,</span> <span class="n">franz</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Look up ‘Craig’, finding the person entity.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">lookup_registry</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;Craig&#39;</span><span class="p">)</span>
+<span class="go">(True, Entity(2906857743, 167772516, 15626322))</span>
+</pre></div>
+</div>
+<p>Look up ‘Franz’, finding the person entity.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">lookup_registry</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;Franz&#39;</span><span class="p">)</span>
+<span class="go">(True, Entity(2906857743, 167772516, 15626324))</span>
+</pre></div>
+</div>
+<p>Attempt to look up ‘Judd’, finding no entity.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">lookup_registry</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="s1">&#39;Judd&#39;</span><span class="p">)</span>
+<span class="go">(False, None)</span>
+</pre></div>
+</div>
+<p>Delete everything and clean up.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reg</span><span class="o">.</span><span class="n">delete_registry</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">av</span><span class="o">.</span><span class="n">delete_entity</span><span class="p">(</span><span class="n">craig</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">av</span><span class="o">.</span><span class="n">delete_entity</span><span class="p">(</span><span class="n">tad</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">av</span><span class="o">.</span><span class="n">delete_entity</span><span class="p">(</span><span class="n">franz</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">av</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="find-registry">
+<h2>find_registry<a class="headerlink" href="#find-registry" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="avesterra.registry.find_registry">
+<code class="sig-name descname">find_registry</code><span class="sig-paren">(</span><em class="sig-param">registry</em>, <em class="sig-param">name</em>, <em class="sig-param">*</em>, <em class="sig-param">index=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avesterra.registry.find_registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the entity with a particular name.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="registry-item">
+<h2>registry_item<a class="headerlink" href="#registry-item" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="avesterra.registry.registry_item">
+<code class="sig-name descname">registry_item</code><span class="sig-paren">(</span><em class="sig-param">registry</em>, <em class="sig-param">*</em>, <em class="sig-param">index=None</em><span class="sig-paren">)</span><a class="headerlink" href="#avesterra.registry.registry_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the entity at a particular index position in the registry.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="item-count">
+<h2>item_count<a class="headerlink" href="#item-count" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="avesterra.registry.item_count">
+<code class="sig-name descname">item_count</code><span class="sig-paren">(</span><em class="sig-param">registry</em><span class="sig-paren">)</span><a class="headerlink" href="#avesterra.registry.item_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return count of entities in the registry.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="registry-member">
+<h2>registry_member<a class="headerlink" href="#registry-member" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="avesterra.registry.registry_member">
+<code class="sig-name descname">registry_member</code><span class="sig-paren">(</span><em class="sig-param">registry</em>, <em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#avesterra.registry.registry_member" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does registry contain an entity with this key?</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="avial.html" class="btn btn-neutral float-left" title="Session operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright © 2015-2020, Georgetown University
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
