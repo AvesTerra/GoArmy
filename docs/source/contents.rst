@@ -11,6 +11,7 @@ AvesTerra Avial, Python edition
 
    avial
    registry
+   comprehensive
 
 
 
